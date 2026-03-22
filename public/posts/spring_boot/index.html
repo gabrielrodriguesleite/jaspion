@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, initial-scale = 1.0, shrink-to-fit=no">
+<title>Spring_boot | Guia Rápido para o Java</title>
+    <link rel="stylesheet" href="/css/vars.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/nav.css">
+
+
+
+
+</head>
+<body>
+  <header>
+    
+  <nav class="navbar">
+    <p>Guia Rápido para o Java</p>
+    <label for="dropdown">
+      <svg height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+        <title>Menu</title>
+        <path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/>
+      </svg>
+    </label>
+    <input type="checkbox" id="dropdown" checked/>
+    <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a aria-current="page" class="active" href="/posts/">Posts</a>
+        </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Spring_boot</h1>
+  
+  <div class="metadata">
+      
+      
+      <time datetime="2026-03-21T22:18:24-03:00">March 21, 2026</time>
+  </div>
+ 
+  <h1 id="spring-boot---guia-prático">
+  Spring Boot - Guia Prático
+  <a href="#spring-boot---guia-pr%c3%a1tico" class="anchor">#</a>
+</h1>
+<h2 id="o-que-é-spring-boot">
+  O que é Spring Boot?
+  <a href="#o-que-%c3%a9-spring-boot" class="anchor">#</a>
+</h2>
+<p><strong>Spring Boot</strong> é um framework que simplifica drasticamente o desenvolvimento de aplicações Java. Ele automatiza configurações complexas do Spring Framework tradicional, permitindo que você crie aplicaçẽos robustas com pouco código.</p>
+<blockquote>
+<p>&ldquo;É como a diferença entre configurar um servidor Node.js manualmente versus usar Express. <strong>Spring Boot</strong> é o <code>Express.js</code> do Java&rdquo;.</p>
+</blockquote>
+<h2 id="por-que-usar-spring-boot">
+  Por que usar Spring Boot?
+  <a href="#por-que-usar-spring-boot" class="anchor">#</a>
+</h2>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Problema</strong></th>
+          <th><strong>Solução Spring Boot</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Configuração XML complexa</td>
+          <td>Configuração automática inteligente</td>
+      </tr>
+      <tr>
+          <td>Dependências conflitantes</td>
+          <td>Gerencia versões compatíveis automaticamente</td>
+      </tr>
+      <tr>
+          <td>Deploy complicado</td>
+          <td>Cria JAR executável com servidor embutido</td>
+      </tr>
+      <tr>
+          <td>Falta de padrões</td>
+          <td>Força arquitetura MVC/REST bem definida</td>
+      </tr>
+      <tr>
+          <td>Muita escrita de código</td>
+          <td>Reduz código boilerplate significativamente</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="criando-projeto-spring-boot">
+  Criando projeto Spring Boot
+  <a href="#criando-projeto-spring-boot" class="anchor">#</a>
+</h2>
+<h3 id="via-spring-initializr">
+  Via Spring Initializr
+  <a href="#via-spring-initializr" class="anchor">#</a>
+</h3>
+<p>Acesse <a href="https://start.spring.io">Spring Initializr</a> baixe e descompacte o projeto já configurado.</p>
+<h3 id="via-maven">
+  Via Maven
+  <a href="#via-maven" class="anchor">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mvn archetype:generate <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -DgroupId<span style="color:#f92672">=</span>com.empresa <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -DartifactId<span style="color:#f92672">=</span>meu-app <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -DarchetypeArtifactId<span style="color:#f92672">=</span>maven-archetype-quickstart
+</span></span></code></pre></div><h2 id="executando-a-aplicação">
+  Executando a aplicação
+  <a href="#executando-a-aplica%c3%a7%c3%a3o" class="anchor">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># Executar via Maven</span>
+</span></span><span style="display:flex;"><span>mvn spring-boot:run
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># compliar e executar JAR</span>
+</span></span><span style="display:flex;"><span>mvn clean package
+</span></span><span style="display:flex;"><span>java -jar target/meu-app-1.0.0.jar
+</span></span></code></pre></div><h2 id="exemplo-de-aquito-pomxml-básico">
+  Exemplo de aquito <code>pom.xml</code> básico
+  <a href="#exemplo-de-aquito-pomxml-b%c3%a1sico" class="anchor">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;project</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://maven.apache.org/POM/4.0.0&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;modelVersion&gt;</span>4.0.0<span style="color:#f92672">&lt;/modelVersion&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;groupId&gt;</span>com.empresa<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;artifactId&gt;</span>meu-app<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;version&gt;</span>1.0.0<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Parent do Spring Boot (gerencia versões) --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;parent&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-parent<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>3.2.0<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;relativePath/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/parent&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;properties&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;java.version&gt;</span>11<span style="color:#f92672">&lt;/java.version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/properties&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- Web (REST APIs) --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-web<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- Banco de dados --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;groupId&gt;</span>mysql<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;artifactId&gt;</span>mysql-connector-java<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;version&gt;</span>8.0.33<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">&lt;!-- Testes --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-starter-test<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;scope&gt;</span>test<span style="color:#f92672">&lt;/scope&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;build&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;plugins&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;plugin&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;groupId&gt;</span>org.springframework.boot<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/plugin&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/plugins&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/build&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="estrutura-de-um-projeto-spring-boot">
+  Estrutura de um Projeto Spring Boot
+  <a href="#estrutura-de-um-projeto-spring-boot" class="anchor">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>src/
+</span></span><span style="display:flex;"><span>├── main/
+</span></span><span style="display:flex;"><span>│   ├── java/com/empresa/app/
+</span></span><span style="display:flex;"><span>│   │   ├── Application.java          <span style="color:#75715e"># Classe principal</span>
+</span></span><span style="display:flex;"><span>│   │   ├── controller/
+</span></span><span style="display:flex;"><span>│   │   │   └── ProductController.java
+</span></span><span style="display:flex;"><span>│   │   ├── service/
+</span></span><span style="display:flex;"><span>│   │   │   └── ProductService.java
+</span></span><span style="display:flex;"><span>│   │   ├── repository/
+</span></span><span style="display:flex;"><span>│   │   │   └── ProductRepository.java
+</span></span><span style="display:flex;"><span>│   │   └── model/
+</span></span><span style="display:flex;"><span>│   │       └── Product.java
+</span></span><span style="display:flex;"><span>│   └── resources/
+</span></span><span style="display:flex;"><span>│       ├── application.properties    <span style="color:#75715e"># Configurações</span>
+</span></span><span style="display:flex;"><span>│       ├── application-dev.properties
+</span></span><span style="display:flex;"><span>│       └── application-prod.properties
+</span></span><span style="display:flex;"><span>└── test/
+</span></span><span style="display:flex;"><span>    └── java/com/empresa/app/
+</span></span><span style="display:flex;"><span>        └── ProductControllerTest.java
+</span></span></code></pre></div>
+
+  </main>
+  <footer>
+    <div class="footer-content">
+  <p>Copyright 2026. All rights reserved.</p>
+</div>
+
+  </footer>
+</body>
+</html>

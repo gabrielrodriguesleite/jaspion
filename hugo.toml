@@ -1,0 +1,16 @@
+baseURL = 'https://example.org/'
+locale = 'pt-br'
+title = 'Guia Rápido para o Java'
+theme = "nojs"
+# https://gitlab.com/andy.sb/nojs
+
+[menus]
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
