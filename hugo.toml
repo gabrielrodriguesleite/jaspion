@@ -4,6 +4,10 @@ title = 'Guia Rápido para o Java'
 theme = "nojs"
 # https://gitlab.com/andy.sb/nojs
 
+[caches]
+[caches.images]
+dir = ':cacheDir/images'
+
 [menus]
 [[menus.main]]
 name = 'Home'
