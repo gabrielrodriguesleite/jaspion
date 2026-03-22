@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="home">
+  <h1>Últimos Posts</h1>
+
+  <div class="posts-list">
+    {{ range .Site.RegularPages.ByPublishDate.Reverse }}
+    <article>
+      <small>{{ .PublishDate.Format "02 de January de 2006" }}</small>
+      <!-- <p>{{ .Summary }}</p> -->
+      <p>{{ .Content | truncate 400 }}</p>
+      <p>...</p>
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a> ← Continue lendo.</h3>
+    </article>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

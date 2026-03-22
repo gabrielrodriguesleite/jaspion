@@ -1,7 +1,7 @@
 +++
 date = '2026-03-21T22:18:24-03:00'
 draft = false
-title = 'Spring_boot'
+title = 'Spring Boot'
 +++
 
 # Spring Boot - Guia Prático

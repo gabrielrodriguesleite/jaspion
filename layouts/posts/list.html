@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="posts-page">
+  <h1>{{ .Title }} asdf</h1>
+
+  <div class="posts-list">
+    {{ range .Paginator.Pages.ByPublishDate.Reverse }}
+
+    <article>
+      <small>{{ .PublishDate.Format "02 de January de 2006" }}</small>
+      <!-- <p>{{ .Summary }}</p> -->
+      <p>{{ .Content | truncate 400 }}</p>
+      <p>...</p>
+      <h3><a href="{{ .Permalink }}">{{ .Title }}</a> ← Continue lendo.</h3>
+    </article>
+    {{ end }}
+  </div>
+
+  <!-- Paginação -->
+  {{ template "partials/pagination.html" . }}
+</div>
+{{ end }}
