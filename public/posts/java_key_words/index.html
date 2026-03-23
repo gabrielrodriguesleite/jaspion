@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, initial-scale = 1.0, shrink-to-fit=no">
+<title>Java Key Words | Guia Rápido para o Java</title>
+    <link rel="stylesheet" href="/css/vars.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/nav.css">
+
+
+
+
+</head>
+<body>
+  <header>
+    
+  <nav class="navbar">
+    <p>Guia Rápido para o Java</p>
+    <label for="dropdown">
+      <svg height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+        <title>Menu</title>
+        <path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/>
+      </svg>
+    </label>
+    <input type="checkbox" id="dropdown" checked/>
+    <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a aria-current="page" class="active" href="/posts/">Posts</a>
+        </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>Java Key Words</h1>
+  
+  <div class="metadata">
+      
+      
+      <time datetime="2026-03-23T17:20:48-03:00">March 23, 2026</time>
+  </div>
+ 
+  <h1 id="guia-prático-sobre-as-palavras-chave-java">
+  Guia Prático sobre as Palavras Chave Java
+  <a href="#guia-pr%c3%a1tico-sobre-as-palavras-chave-java" class="anchor">#</a>
+</h1>
+<h2 id="modificadores-de-acesso-public-private-protected">
+  Modificadores de acesso <code>public</code> <code>private</code> <code>protected</code>
+  <a href="#modificadores-de-acesso-public-private-protected" class="anchor">#</a>
+</h2>
+<p><code>public</code> <code>private</code> e <code>protected</code> são modificadores de acesso que controlam a visibilidade de classes, métodos e variáveis. Eles definem quem pode acessar esses membros.</p>
+<h3 id="sem-modificador">
+  Sem modificador
+  <a href="#sem-modificador" class="anchor">#</a>
+</h3>
+<p>Membros definidos sem modificadores de acesso são <strong>visíveis na mesma classe, mesmo pacote</strong> mas <strong>invisíveis para subclasses ou qualquer outra parte da aplicação</strong>.</p>
+<h3 id="public---acesso-público">
+  <code>public</code> - Acesso Público
+  <a href="#public---acesso-p%c3%bablico" class="anchor">#</a>
+</h3>
+<p><code>public</code> é um modificador de acesse que oferece visibilidade total a classes, métodos e variáveis. Um membro <code>public</code> <strong>pode ser acessado de qualquer lugar do programa</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pessoa</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String nome <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Gabriel&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">saudar</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Olá!&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Em outra classe, em outro pacote:</span>
+</span></span><span style="display:flex;"><span>Pessoa p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Pessoa();
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(p.<span style="color:#a6e22e">nome</span>); <span style="color:#75715e">// OK. Dado acessível.</span>
+</span></span><span style="display:flex;"><span>p.<span style="color:#a6e22e">saudar</span>();                 <span style="color:#75715e">// OK. Dado acessível.</span>
+</span></span></code></pre></div><h3 id="private---acesso-privado">
+  <code>private</code> - Acesso Privado
+  <a href="#private---acesso-privado" class="anchor">#</a>
+</h3>
+<p><code>private</code> é um modificador de acesse que oferece visibilidade limitado a classes, métodos e variáveis. Um membro <code>private</code> <strong>só pode ser acessado dentro dad mesma classe</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Conta</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> saldo <span style="color:#f92672">=</span> 1000.<span style="color:#a6e22e">0</span>;      <span style="color:#75715e">// privado</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String senha <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;12345678&#34;</span>;  <span style="color:#75715e">// privado</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">depositar</span>(<span style="color:#66d9ef">double</span> valor) {
+</span></span><span style="display:flex;"><span>    saldo <span style="color:#f92672">+=</span> valor; <span style="color:#75715e">// OK. Dado acessível aqui.</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Em outra classe:</span>
+</span></span><span style="display:flex;"><span>Conta c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Conta();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// System.out.println(c.saldo); // Erro. Tentativa de acessar dado privado.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.senha = &#34;99999&#34;;           // Erro. Tentativa de modificar dado privado.</span>
+</span></span></code></pre></div><h4 id="por-que-usar-private---encapsulamento-proteção-de-dados">
+  Por que usar <code>private</code>? - Encapsulamento (proteção de dados)
+  <a href="#por-que-usar-private---encapsulamento-prote%c3%a7%c3%a3o-de-dados" class="anchor">#</a>
+</h4>
+<p>No exemplo à seguir o membro <code>saldo</code> é protegido. Você não pode alterar diretamente, mas pode usar métodos que fazem validações.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Conta</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> saldo <span style="color:#f92672">=</span> 1000.<span style="color:#a6e22e">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Método público para acessar o saldo</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getSaldo</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> saldo;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Método público para depositar (com validação)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">depositar</span>(<span style="color:#66d9ef">double</span> valor) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (valor <span style="color:#f92672">&gt;</span> 0 ) {
+</span></span><span style="display:flex;"><span>      saldo <span style="color:#f92672">+=</span> valor;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Conta c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Conta();
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c.<span style="color:#a6e22e">getSaldo</span>()); <span style="color:#75715e">// OK. Acesso controlado</span>
+</span></span><span style="display:flex;"><span>c.<span style="color:#a6e22e">depositar</span>(500);                 <span style="color:#75715e">// OK. Acesso validado.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.saldo = -9999;               // Erro. Valor inválido detectado.</span>
+</span></span></code></pre></div><h4 id="exemplo-prático-completo">
+  Exemplo prático completo
+  <a href="#exemplo-pr%c3%a1tico-completo" class="anchor">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Carro</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Privado - dados sensíveis</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String placa;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> velocidade <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Público - construtor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Carro</span>(String placa) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">placa</span> <span style="color:#f92672">=</span> placa;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Público - métodos controlados</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">acelerar</span>(<span style="color:#66d9ef">double</span> aumento) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (aumento <span style="color:#f92672">&gt;</span> 0 <span style="color:#f92672">&amp;&amp;</span> velocidade <span style="color:#f92672">+</span> aumento <span style="color:#f92672">&lt;=</span> 200) {
+</span></span><span style="display:flex;"><span>      velocidade <span style="color:#f92672">+=</span> aumento;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getVelocidade</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> velocidade;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getPlaca</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> placa;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Uso:</span>
+</span></span><span style="display:flex;"><span>Carro c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Carro(<span style="color:#e6db74">&#34;ABC1234&#34;</span>);
+</span></span><span style="display:flex;"><span>c.<span style="color:#a6e22e">acelerar</span>(50);                         <span style="color:#75715e">// OK. Método público.</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c.<span style="color:#a6e22e">getVelocidade</span>());  <span style="color:#75715e">// 50</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.velocidade = 500;                  // Erro. Tentativa de acessar dado privado.</span>
+</span></span></code></pre></div><h4 id="resumo-de-diferenças">
+  Resumo de diferenças
+  <a href="#resumo-de-diferen%c3%a7as" class="anchor">#</a>
+</h4>
+<table>
+  <thead>
+      <tr>
+          <th>Aspecto</th>
+          <th><code>public</code></th>
+          <th><code>private</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Acesso</strong></td>
+          <td>De qualquer lugar</td>
+          <td>Apenas dentro da classe</td>
+      </tr>
+      <tr>
+          <td><strong>Segurança</strong></td>
+          <td>Baixa</td>
+          <td>Alta</td>
+      </tr>
+      <tr>
+          <td><strong>Uso típico</strong></td>
+          <td>Interfáce da classe</td>
+          <td>Dados internos</td>
+      </tr>
+      <tr>
+          <td><strong>Exemplo</strong></td>
+          <td>Métodos úteis</td>
+          <td>Vatiáveis sensíveis</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Regra de ouro</strong>: Use <code>private</code> para dados internos e <code>public</code> apenas para o que realmente precisa ser acessado de fora.</p>
+</blockquote>
+<h3 id="protected---acesso-intermediário">
+  <code>protected</code> - Acesso intermediário
+  <a href="#protected---acesso-intermedi%c3%a1rio" class="anchor">#</a>
+</h3>
+<p><code>protected</code> é um modificador de acesso que oferece um nível intermediário de visibilidade entre <code>private</code> e <code>public</code>. Um membro <code>protected</code> pode ser acessado pela classe, pelo mesmo pacote e pelas subclasses (mesmo) em pacotes diferentes).</p>
+<table>
+  <thead>
+      <tr>
+          <th>Quem acessa</th>
+          <th style="text-align: center">Acesso</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Mesma classe</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+      <tr>
+          <td>Mesmo pacote</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+      <tr>
+          <td>Subclasse (herança)</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+      <tr>
+          <td>Outras classes fora do pacote</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="exemplo-prático">
+  Exemplo Prático
+  <a href="#exemplo-pr%c3%a1tico" class="anchor">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> String nome;  <span style="color:#75715e">// Protegido</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String dna;     <span style="color:#75715e">// Privado</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String especie;  <span style="color:#75715e">// Público</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fazerSom</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(nome <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; faz som.&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Subclasse em outro pacote</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cachorro</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">latir</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// - [x] Pode acessar membros protected da superclasse</span>
+</span></span><span style="display:flex;"><span>    Sytesm.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(nome <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; está latindo!&#34;</span>);
+</span></span><span style="display:flex;"><span>    fazerSom(); <span style="color:#75715e">// - [x] Pode chamar método protected</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// System.out.println(dna); // Erro. Tentativa de acessar dado privado.</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outra classe fora do pacote</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Teste</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>    Cachorro c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cachorro();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// System.out.println(c.nome); // Erro. Tentativa de acessar dado protegido.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// c.fazerSom(); // Erro. Tentativa de acessar dado protegido.</span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c.<span style="color:#a6e22e">especie</span>); <span style="color:#75715e">// - [x] OK, o dado é público.</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="quando-usar-protected-">
+  Quando usar <code>protected</code> ?
+  <a href="#quando-usar-protected-" class="anchor">#</a>
+</h4>
+<p><code>protected</code> é ideal quando você quer:</p>
+<ul>
+<li>Permitir que as subclasses acessem dados ou métodos.</li>
+<li>Manter a encapsulação contra classes não-relacionadas.</li>
+<li>Criar uma interface para herança sem expor tudo publicamente.</li>
+</ul>
+<blockquote>
+<p>Use <code>protected</code> para membros que fazem sentido serem herdados, mas <code>private</code> para dados internos que devem ficar completamente ocultos.</p>
+</blockquote>
+<p><strong>1 Método que as subclasses podem sobreescrever</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Veiculo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ligar</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Veiculo ligado&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> classs Carro <span style="color:#66d9ef">extends</span> Veiculo {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ligar</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Carro ligado com chave&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>2 Dados que as subclasses precisam acessar</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pessoa</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> String cpf; <span style="color:#75715e">// Subclasses podem acessar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">int</span> idade;  <span style="color:#75715e">// Subclasses podem acessar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String senha; <span style="color:#75715e">// Apenas Pessoa pode acessar</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Class Funcionario <span style="color:#66d9ef">extends</span> Pessoa {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">exibirDados</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(cpf); <span style="color:#75715e">// OK. Acesso permitido</span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(idade); <span style="color:#75715e">// OK. Acesso permitido</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// System.out.println(senha); // Erro. Tentativa de acessar dado privado.</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>3 Métodos auxiliares para subclasse</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FormaGeometrica</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calcularArea</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> 0; <span style="color:#75715e">// implementação padrão</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Retangulo</span> <span style="color:#66d9ef">extends</span> FormaGeometrica {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> largura, altura;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">calcularArea</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> largura <span style="color:#f92672">*</span> altura; <span style="color:#75715e">// Subclasse pode sobreescrever</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="exemplo-completo-hierarquia-de-classes">
+  Exemplo completo Hierarquia de classes
+  <a href="#exemplo-completo-hierarquia-de-classes" class="anchor">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> String nome;  <span style="color:#75715e">// Subclasses podem acessar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> String dna;     <span style="color:#75715e">// Apenas Animal acessa</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String especie;  <span style="color:#75715e">// Qualquer um acessa</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mover</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(nome <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; está se movendo.&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Mamifero</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">amamentar</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// - [x] Pode acessar protected</span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(nome <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; está amamentando.&#34;</span>);
+</span></span><span style="display:flex;"><span>    mover(); <span style="color:#75715e">// - [x] Pode chamar método protected</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cachorro</span> <span style="color:#66d9ef">extends</span> Mamifero {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">latir</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// - [x] Herda acesso a protected de Animal</span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(nome <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; está latindo.&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Uso:</span>
+</span></span><span style="display:flex;"><span>Cachorro c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cachorro();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.nome = &#34;Rex&#34;; // Erro. Tentativa de acessar dado protegido.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// System.out.println(c.dna); // Erro. Tentativa de acessar dado privado.</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c.<span style="color:#a6e22e">especie</span>); <span style="color:#75715e">// - [x] OK. Acesso permitido. Dado público.</span>
+</span></span></code></pre></div><h3 id="comparação">
+  Comparação
+  <a href="#compara%c3%a7%c3%a3o" class="anchor">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Modificador</th>
+          <th style="text-align: center">Mesma classe</th>
+          <th style="text-align: center">Mesmo pacote</th>
+          <th style="text-align: center">Subclasse</th>
+          <th style="text-align: center">Qualquer lugar</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>private</code></td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td>(sem modificador)</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td><code>protected</code></td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">❌</td>
+      </tr>
+      <tr>
+          <td><code>public</code></td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+          <td style="text-align: center">✅</td>
+      </tr>
+  </tbody>
+</table>
+
+
+  </main>
+  <footer>
+    <div class="footer-content">
+  <p>Copyright 2026. All rights reserved.</p>
+</div>
+
+  </footer>
+</body>
+</html>
