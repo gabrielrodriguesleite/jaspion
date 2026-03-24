@@ -1,0 +1,12 @@
+{{define "main"}}
+<div class="post-page">
+  <h1>{{.Title }}</h1>
+  {{ if .Params.toc }}
+  <h2>Sumário</h2>
+  <div class="toc">{{ .TableOfContents}}</div>
+  {{ end }}
+  <article>
+    <div class="content">{{.Content}}</div>
+  </article>
+</div>
+{{end}}

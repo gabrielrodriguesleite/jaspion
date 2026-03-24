@@ -2,6 +2,7 @@
 date = '2026-03-23T17:20:48-03:00'
 draft = false
 title = 'Java Key Words'
+toc = true
 +++
 
 # Guia Prático sobre as Palavras Chave Java
@@ -280,3 +281,320 @@ System.out.println(c.especie); // - [x] OK. Acesso permitido. Dado público.
 | (sem modificador) |      ✅      |      ✅      |    ❌     |       ❌       |
 | `protected`       |      ✅      |      ✅      |    ✅     |       ❌       |
 | `public`          |      ✅      |      ✅      |    ✅     |       ✅       |
+
+## Static
+
+`static` é uma palavra-chave que marca um membro (variável ou método) como **pertencente à classe em si, e não a instâncias individuais** da classe. Significa que existe apenas uma cópia desse membro, compartilhada por todas as instâncias.
+
+### Variáveis estáticas
+
+Uma variável `static` é compartilhada por todas as instâncias da classe:
+
+No exemplo à seguir, `total` é incrementada a cada nova instância criada, mas existe apenas uma única dessa variável na memória.
+
+```java
+public class Contador {
+  static int total = 0; // Compartilhado por todas as instâncias
+  int id;
+
+  public Contador() {
+    total++;
+    id = total;
+  }
+}
+
+Contador c1 = new Contador();
+Contador c2 = new Contador();
+System.out.println(c1.id);          // 1
+System.out.println(c2.id);          // 2
+System.out.println(Contador.total); // 2
+```
+
+### Métodos estáticos
+
+Um método `static` não precisa de uma instância para ser chamado:
+
+```java
+public class Calculadora {
+  static int somar(int a, int b) {
+    return a + b;
+  }
+}
+
+int resultado = Calculadora.somar(5, 3);  // chamado diretamente na classe
+System.out.println(resultado);            // 8
+```
+
+Não há necessidade de criar um objeto `new Calculadora()` para usar o método.
+
+| Aspecto          | Estático                        | Não-estático                       |
+| ---------------- | ------------------------------- | ---------------------------------- |
+| Acesso           | Pela classe (`Classe.metodo()`) | Por instância( `objeto.metodo()`)  |
+| Cópia em memória | Uma única cópia                 | Uma cópia por instância            |
+| Acesso a `this`  | Não tem acesso                  | Tem acesso                         |
+| Uso típico       | Utilitários, constantes         | Comportamento específico do objeto |
+
+### Exemplos práticos
+
+**Constantes estáticas**
+
+```java
+public class Configuracao {
+  static final double PI = 3.14159;
+  static final string VERSAO = "1.0";
+}
+
+System.out.println(Configuracao.PI);  // 3.14159
+```
+
+**Método utilitário**
+
+```java
+public class StringUtils {
+  static String reverter(String texto) {
+    retur new StringBuilder(texto).reverse().toString();
+  }
+}
+
+String invertido = StringUtils.reverter("Gabriel"); // "leirbaG"
+```
+
+### ⚠️ Restrições importantes
+
+Um método `static` não pode acessar membros não-estáticos diretamente. Isso ocorre porque métodos estáticos não tem acesso a `this` (não está vinculado a uma instância específica).
+
+```java
+public class Exemplo {
+  int valor = 10; // não-estático
+
+  static void exibir() {
+    // System.out.println(valor); // Erro. Método estático tentando acessar dado não estático.
+    System.out.println("Olá");    // OK.
+  }
+}
+```
+
+## Final
+
+`final` é uma palavra-chave que marca algo como **constante, imutável ou não-sobrescritível**, dependendo do contexto. Uma vez definido, não pode ser alterado ou estendido.
+
+### Variáveis finais
+
+Uma variável `final` não pode ter seu valor alterado após a atribuição inicial.
+
+```java
+final int idade = 25;
+// idade = 30; // Erro de compilação.
+
+final String nome = "Gabriel";
+// nome = "Gabriel Leite"; // Erro de compilação.
+```
+
+A variável deve ser inicializada **obrigatoriamente** (na declaração ou no contrutor);
+
+```java
+public class Pessoa {
+  final string cpf;
+
+  public Pessoa(String cpf) {
+    this.cpf = cpf; // Inicialização no construtor
+  }
+}
+```
+
+### Métodos finais
+
+Um método `final` não pode ser sobreescrito por subclasses:
+
+```java
+public class Animal {
+  final void fazerSom() {
+    System.out.println("Som do animal.");
+  }
+}
+
+public class Cachorro extends Animal {
+  // void fazerSom() {} // Erro. Não é possível reescrever um método final
+}
+```
+
+> Isso garante que a implementação do método não seja alterado pelas subclasses.
+
+### Classes finais
+
+Uma classe `final` não pode ser estendida:
+
+```java
+final public class Imovel {
+  // ...
+}
+
+// public class Casa extends Imovel {} // Erro. Não é possível extender uma classe final
+```
+
+Exemplos reais: `String`, `Integer`, `Double` são classes finais do Java.
+
+### Comparação `final` em diferentes contextos
+
+| Contexto | Efeito                                   |
+| -------- | ---------------------------------------- |
+| Variável | Não pode ter seu valor alterado          |
+| Método   | Não pode ser sobreescrito por subclasses |
+| Classe   | Não pode ser estendida                   |
+
+### Quando usar `final`
+
+- **Constantes**: valores que nunca devem mudar
+- **Segurança**: impedir que métodos críticos sejam alterados
+- **Performance**: o compilador pode otimizar código `final`
+- **Imutabilidade**: criar objetos que não podem ser modificados
+
+### Exemplos práticos
+
+#### Constantes
+
+```java
+public class Configuracao {
+  static final double PI = 3.14159;
+  static final String VERSAO = "2.0";
+}
+```
+
+#### Parâmetros finais
+
+```java
+void calcular(final int valor) {
+  // valor = 10; // Erro.
+  System.out.println(valor);
+}
+```
+
+#### Classe imutável
+
+```java
+final public class Ponto {
+  final double x;
+  final double y;
+
+  public Ponto(double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+```
+
+## Record
+
+Em **Java**, `record` é uma forma consisa de declarar uma classe que funciona principalmente como um **contentor de dados imutáveis**. Introduzido no Java 16 (como recurso final, parte da linguagem oficial), o `record` reduz significativamente a quantidade de código boilerplate necessário.
+
+### Sintaxe
+
+```java
+public record Pessoa(String nome, int idade) {}
+```
+
+Isso é equivalente a uma classe tradicional com:
+
+- Campos privados e finais(nome e idade)
+- Contrutor canônico que aceita todos os parâmetros
+- Métodos `getter` automáticos (`nome()` e `idade()`)
+- Métodos `equals()`, `hashCode` e `toString()` gerados automaticamente
+
+### Características Principais
+
+**Imutabilidade**
+
+Os campos de um `record` são sempre **finais**, ou seja não podem ser alterados após a criação.
+
+```java
+Pessoa p = new Pessoa("João", 30);
+p.nome(); // retorna "João"
+// p.nome = "Maria"; // Erro de compilação
+```
+
+**Uso prático**
+
+```java
+record Ponto(double x, double y) {}
+
+Ponto p1 = new Ponto(10.5, 20.3);
+Ponto p2 = new Ponto(10.5, 20.3);
+
+System.out.println(p1.equals(p2));  // true
+System.out.println(p1);           // Ponto[x=10.5, y=20.3]
+```
+
+#### Quando Usar `record`
+
+- Transferência de dados entre métodos ou classes
+- Dados imutáveis (que não precisam mudar)
+- Reduzir código em comparação com classes tradicionais
+- Estruturas simples sem lógica complexa
+
+> **Não use `record` quando precisar de campos mutáveis, herança ou lógica complexa de classe.**
+
+#### Exemplos de como seria o código _com_ e _sem_ `record`
+
+```java
+// Com record
+
+public record Produto (String nome, double preco) {}
+
+// Uso:
+List<Produto> produtos = Arrays.asList(
+  new Produto("Notebook", 2500.0),
+  new Produto("Mouse", 50.0)
+);
+
+// Funciona perfeitamente com Set, HashMap, etc.
+Set<Produto> unicos = new HashSet<>(produtos);
+```
+
+```java
+// Sem record
+
+public class Produto {
+  private final String nome;
+  private final double preco;
+
+  public Produto(String nome, double, preco) {
+    this.nome = nome;
+    this.preco = preco;
+  }
+
+  public String nome() {
+    return nome;
+  }
+
+  public String preco() {
+    return preco;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == 0) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Produto produto = (Produto) o;
+    return Double.compare(produto.preco, preco) == 0 && Objects.equals(nome, produto.nome);
+  }
+
+  @Override
+  public int hashCode() {
+    return Object.hash(nome, preco);
+  }
+
+  @Override
+  public String toString() {
+    return "Produto{" + "nome=" + nome + ", preco=" + preco + '}';
+  }
+}
+
+// Uso:
+List<Produto> produtos = Arrays.asList(
+  new Produto("Notebook", 2500.0),
+  new Produto("Mouse", 50.0)
+);
+
+Set<Produto> unicos = new HashSet<>(produtos);
+
+```

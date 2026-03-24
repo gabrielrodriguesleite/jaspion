@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width, initial-scale=1, initial-scale = 1.0, shrink-to-fit=no">
@@ -40,15 +40,51 @@
   </header>
   <main>
     
+<div class="post-page">
   <h1>Java Key Words</h1>
   
-  <div class="metadata">
-      
-      
-      <time datetime="2026-03-23T17:20:48-03:00">March 23, 2026</time>
-  </div>
- 
-  <h1 id="guia-prático-sobre-as-palavras-chave-java">
+  <h2>Sumário</h2>
+  <div class="toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#modificadores-de-acesso-public-private-protected">Modificadores de acesso <code>public</code> <code>private</code> <code>protected</code></a>
+      <ul>
+        <li><a href="#sem-modificador">Sem modificador</a></li>
+        <li><a href="#public---acesso-público"><code>public</code> - Acesso Público</a></li>
+        <li><a href="#private---acesso-privado"><code>private</code> - Acesso Privado</a></li>
+        <li><a href="#protected---acesso-intermediário"><code>protected</code> - Acesso intermediário</a></li>
+        <li><a href="#exemplo-completo-hierarquia-de-classes">Exemplo completo Hierarquia de classes</a></li>
+        <li><a href="#comparação">Comparação</a></li>
+      </ul>
+    </li>
+    <li><a href="#static">Static</a>
+      <ul>
+        <li><a href="#variáveis-estáticas">Variáveis estáticas</a></li>
+        <li><a href="#métodos-estáticos">Métodos estáticos</a></li>
+        <li><a href="#exemplos-práticos">Exemplos práticos</a></li>
+        <li><a href="#-restrições-importantes">⚠️ Restrições importantes</a></li>
+      </ul>
+    </li>
+    <li><a href="#final">Final</a>
+      <ul>
+        <li><a href="#variáveis-finais">Variáveis finais</a></li>
+        <li><a href="#métodos-finais">Métodos finais</a></li>
+        <li><a href="#classes-finais">Classes finais</a></li>
+        <li><a href="#comparação-final-em-diferentes-contextos">Comparação <code>final</code> em diferentes contextos</a></li>
+        <li><a href="#quando-usar-final">Quando usar <code>final</code></a></li>
+        <li><a href="#exemplos-práticos-1">Exemplos práticos</a></li>
+      </ul>
+    </li>
+    <li><a href="#record">Record</a>
+      <ul>
+        <li><a href="#sintaxe">Sintaxe</a></li>
+        <li><a href="#características-principais">Características Principais</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+  
+  <article>
+    <div class="content"><h1 id="guia-prático-sobre-as-palavras-chave-java">
   Guia Prático sobre as Palavras Chave Java
   <a href="#guia-pr%c3%a1tico-sobre-as-palavras-chave-java" class="anchor">#</a>
 </h1>
@@ -394,7 +430,340 @@
       </tr>
   </tbody>
 </table>
-
+<h2 id="static">
+  Static
+  <a href="#static" class="anchor">#</a>
+</h2>
+<p><code>static</code> é uma palavra-chave que marca um membro (variável ou método) como <strong>pertencente à classe em si, e não a instâncias individuais</strong> da classe. Significa que existe apenas uma cópia desse membro, compartilhada por todas as instâncias.</p>
+<h3 id="variáveis-estáticas">
+  Variáveis estáticas
+  <a href="#vari%c3%a1veis-est%c3%a1ticas" class="anchor">#</a>
+</h3>
+<p>Uma variável <code>static</code> é compartilhada por todas as instâncias da classe:</p>
+<p>No exemplo à seguir, <code>total</code> é incrementada a cada nova instância criada, mas existe apenas uma única dessa variável na memória.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Contador</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> total <span style="color:#f92672">=</span> 0; <span style="color:#75715e">// Compartilhado por todas as instâncias</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Contador</span>() {
+</span></span><span style="display:flex;"><span>    total<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> total;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Contador c1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Contador();
+</span></span><span style="display:flex;"><span>Contador c2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Contador();
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c1.<span style="color:#a6e22e">id</span>);          <span style="color:#75715e">// 1</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c2.<span style="color:#a6e22e">id</span>);          <span style="color:#75715e">// 2</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Contador.<span style="color:#a6e22e">total</span>); <span style="color:#75715e">// 2</span>
+</span></span></code></pre></div><h3 id="métodos-estáticos">
+  Métodos estáticos
+  <a href="#m%c3%a9todos-est%c3%a1ticos" class="anchor">#</a>
+</h3>
+<p>Um método <code>static</code> não precisa de uma instância para ser chamado:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Calculadora</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">somar</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> resultado <span style="color:#f92672">=</span> Calculadora.<span style="color:#a6e22e">somar</span>(5, 3);  <span style="color:#75715e">// chamado diretamente na classe</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(resultado);            <span style="color:#75715e">// 8</span>
+</span></span></code></pre></div><p>Não há necessidade de criar um objeto <code>new Calculadora()</code> para usar o método.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Aspecto</th>
+          <th>Estático</th>
+          <th>Não-estático</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Acesso</td>
+          <td>Pela classe (<code>Classe.metodo()</code>)</td>
+          <td>Por instância( <code>objeto.metodo()</code>)</td>
+      </tr>
+      <tr>
+          <td>Cópia em memória</td>
+          <td>Uma única cópia</td>
+          <td>Uma cópia por instância</td>
+      </tr>
+      <tr>
+          <td>Acesso a <code>this</code></td>
+          <td>Não tem acesso</td>
+          <td>Tem acesso</td>
+      </tr>
+      <tr>
+          <td>Uso típico</td>
+          <td>Utilitários, constantes</td>
+          <td>Comportamento específico do objeto</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="exemplos-práticos">
+  Exemplos práticos
+  <a href="#exemplos-pr%c3%a1ticos" class="anchor">#</a>
+</h3>
+<p><strong>Constantes estáticas</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Configuracao</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> PI <span style="color:#f92672">=</span> 3.<span style="color:#a6e22e">14159</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> string VERSAO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;1.0&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Configuracao.<span style="color:#a6e22e">PI</span>);  <span style="color:#75715e">// 3.14159</span>
+</span></span></code></pre></div><p><strong>Método utilitário</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StringUtils</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">reverter</span>(String texto) {
+</span></span><span style="display:flex;"><span>    retur <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">StringBuilder</span>(texto).<span style="color:#a6e22e">reverse</span>().<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>String invertido <span style="color:#f92672">=</span> StringUtils.<span style="color:#a6e22e">reverter</span>(<span style="color:#e6db74">&#34;Gabriel&#34;</span>); <span style="color:#75715e">// &#34;leirbaG&#34;</span>
+</span></span></code></pre></div><h3 id="-restrições-importantes">
+  ⚠️ Restrições importantes
+  <a href="#-restri%c3%a7%c3%b5es-importantes" class="anchor">#</a>
+</h3>
+<p>Um método <code>static</code> não pode acessar membros não-estáticos diretamente. Isso ocorre porque métodos estáticos não tem acesso a <code>this</code> (não está vinculado a uma instância específica).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Exemplo</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> valor <span style="color:#f92672">=</span> 10; <span style="color:#75715e">// não-estático</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">exibir</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// System.out.println(valor); // Erro. Método estático tentando acessar dado não estático.</span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Olá&#34;</span>);    <span style="color:#75715e">// OK.</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="final">
+  Final
+  <a href="#final" class="anchor">#</a>
+</h2>
+<p><code>final</code> é uma palavra-chave que marca algo como <strong>constante, imutável ou não-sobrescritível</strong>, dependendo do contexto. Uma vez definido, não pode ser alterado ou estendido.</p>
+<h3 id="variáveis-finais">
+  Variáveis finais
+  <a href="#vari%c3%a1veis-finais" class="anchor">#</a>
+</h3>
+<p>Uma variável <code>final</code> não pode ter seu valor alterado após a atribuição inicial.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> idade <span style="color:#f92672">=</span> 25;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// idade = 30; // Erro de compilação.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">final</span> String nome <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Gabriel&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// nome = &#34;Gabriel Leite&#34;; // Erro de compilação.</span>
+</span></span></code></pre></div><p>A variável deve ser inicializada <strong>obrigatoriamente</strong> (na declaração ou no contrutor);</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pessoa</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> string cpf;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Pessoa</span>(String cpf) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cpf</span> <span style="color:#f92672">=</span> cpf; <span style="color:#75715e">// Inicialização no construtor</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="métodos-finais">
+  Métodos finais
+  <a href="#m%c3%a9todos-finais" class="anchor">#</a>
+</h3>
+<p>Um método <code>final</code> não pode ser sobreescrito por subclasses:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Animal</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fazerSom</span>() {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Som do animal.&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Cachorro</span> <span style="color:#66d9ef">extends</span> Animal {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// void fazerSom() {} // Erro. Não é possível reescrever um método final</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Isso garante que a implementação do método não seja alterado pelas subclasses.</p>
+</blockquote>
+<h3 id="classes-finais">
+  Classes finais
+  <a href="#classes-finais" class="anchor">#</a>
+</h3>
+<p>Uma classe <code>final</code> não pode ser estendida:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Imovel</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// public class Casa extends Imovel {} // Erro. Não é possível extender uma classe final</span>
+</span></span></code></pre></div><p>Exemplos reais: <code>String</code>, <code>Integer</code>, <code>Double</code> são classes finais do Java.</p>
+<h3 id="comparação-final-em-diferentes-contextos">
+  Comparação <code>final</code> em diferentes contextos
+  <a href="#compara%c3%a7%c3%a3o-final-em-diferentes-contextos" class="anchor">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Contexto</th>
+          <th>Efeito</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Variável</td>
+          <td>Não pode ter seu valor alterado</td>
+      </tr>
+      <tr>
+          <td>Método</td>
+          <td>Não pode ser sobreescrito por subclasses</td>
+      </tr>
+      <tr>
+          <td>Classe</td>
+          <td>Não pode ser estendida</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="quando-usar-final">
+  Quando usar <code>final</code>
+  <a href="#quando-usar-final" class="anchor">#</a>
+</h3>
+<ul>
+<li><strong>Constantes</strong>: valores que nunca devem mudar</li>
+<li><strong>Segurança</strong>: impedir que métodos críticos sejam alterados</li>
+<li><strong>Performance</strong>: o compilador pode otimizar código <code>final</code></li>
+<li><strong>Imutabilidade</strong>: criar objetos que não podem ser modificados</li>
+</ul>
+<h3 id="exemplos-práticos-1">
+  Exemplos práticos
+  <a href="#exemplos-pr%c3%a1ticos-1" class="anchor">#</a>
+</h3>
+<h4 id="constantes">
+  Constantes
+  <a href="#constantes" class="anchor">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Configuracao</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> PI <span style="color:#f92672">=</span> 3.<span style="color:#a6e22e">14159</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> String VERSAO <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2.0&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="parâmetros-finais">
+  Parâmetros finais
+  <a href="#par%c3%a2metros-finais" class="anchor">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">calcular</span>(<span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> valor) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// valor = 10; // Erro.</span>
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(valor);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="classe-imutável">
+  Classe imutável
+  <a href="#classe-imut%c3%a1vel" class="anchor">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Ponto</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> x;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> y;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Ponto</span>(<span style="color:#66d9ef">double</span> x, <span style="color:#66d9ef">double</span> y) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> x;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> y;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="record">
+  Record
+  <a href="#record" class="anchor">#</a>
+</h2>
+<p>Em <strong>Java</strong>, <code>record</code> é uma forma consisa de declarar uma classe que funciona principalmente como um <strong>contentor de dados imutáveis</strong>. Introduzido no Java 16 (como recurso final, parte da linguagem oficial), o <code>record</code> reduz significativamente a quantidade de código boilerplate necessário.</p>
+<h3 id="sintaxe">
+  Sintaxe
+  <a href="#sintaxe" class="anchor">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Pessoa</span>(String nome, <span style="color:#66d9ef">int</span> idade) {}
+</span></span></code></pre></div><p>Isso é equivalente a uma classe tradicional com:</p>
+<ul>
+<li>Campos privados e finais(nome e idade)</li>
+<li>Contrutor canônico que aceita todos os parâmetros</li>
+<li>Métodos <code>getter</code> automáticos (<code>nome()</code> e <code>idade()</code>)</li>
+<li>Métodos <code>equals()</code>, <code>hashCode</code> e <code>toString()</code> gerados automaticamente</li>
+</ul>
+<h3 id="características-principais">
+  Características Principais
+  <a href="#caracter%c3%adsticas-principais" class="anchor">#</a>
+</h3>
+<p><strong>Imutabilidade</strong></p>
+<p>Os campos de um <code>record</code> são sempre <strong>finais</strong>, ou seja não podem ser alterados após a criação.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Pessoa p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Pessoa(<span style="color:#e6db74">&#34;João&#34;</span>, 30);
+</span></span><span style="display:flex;"><span>p.<span style="color:#a6e22e">nome</span>(); <span style="color:#75715e">// retorna &#34;João&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// p.nome = &#34;Maria&#34;; // Erro de compilação</span>
+</span></span></code></pre></div><p><strong>Uso prático</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Ponto</span>(<span style="color:#66d9ef">double</span> x, <span style="color:#66d9ef">double</span> y) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ponto p1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Ponto(10.<span style="color:#a6e22e">5</span>, 20.<span style="color:#a6e22e">3</span>);
+</span></span><span style="display:flex;"><span>Ponto p2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Ponto(10.<span style="color:#a6e22e">5</span>, 20.<span style="color:#a6e22e">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(p1.<span style="color:#a6e22e">equals</span>(p2));  <span style="color:#75715e">// true</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(p1);           <span style="color:#75715e">// Ponto[x=10.5, y=20.3]</span>
+</span></span></code></pre></div><h4 id="quando-usar-record">
+  Quando Usar <code>record</code>
+  <a href="#quando-usar-record" class="anchor">#</a>
+</h4>
+<ul>
+<li>Transferência de dados entre métodos ou classes</li>
+<li>Dados imutáveis (que não precisam mudar)</li>
+<li>Reduzir código em comparação com classes tradicionais</li>
+<li>Estruturas simples sem lógica complexa</li>
+</ul>
+<blockquote>
+<p><strong>Não use <code>record</code> quando precisar de campos mutáveis, herança ou lógica complexa de classe.</strong></p>
+</blockquote>
+<h4 id="exemplos-de-como-seria-o-código-com-e-sem-record">
+  Exemplos de como seria o código <em>com</em> e <em>sem</em> <code>record</code>
+  <a href="#exemplos-de-como-seria-o-c%c3%b3digo-com-e-sem-record" class="anchor">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Com record</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Produto</span> (String nome, <span style="color:#66d9ef">double</span> preco) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Uso:</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Produto<span style="color:#f92672">&gt;</span> produtos <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> Produto(<span style="color:#e6db74">&#34;Notebook&#34;</span>, 2500.<span style="color:#a6e22e">0</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> Produto(<span style="color:#e6db74">&#34;Mouse&#34;</span>, 50.<span style="color:#a6e22e">0</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Funciona perfeitamente com Set, HashMap, etc.</span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Produto<span style="color:#f92672">&gt;</span> unicos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(produtos);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Sem record</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Produto</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> String nome;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> preco;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Produto</span>(String nome, <span style="color:#66d9ef">double</span>, preco) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">nome</span> <span style="color:#f92672">=</span> nome;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">preco</span> <span style="color:#f92672">=</span> preco;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">nome</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> nome;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">preco</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> preco;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">equals</span>(Object o) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">==</span> 0) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (o <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> getClass() <span style="color:#f92672">!=</span> o.<span style="color:#a6e22e">getClass</span>()) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    Produto produto <span style="color:#f92672">=</span> (Produto) o;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Double.<span style="color:#a6e22e">compare</span>(produto.<span style="color:#a6e22e">preco</span>, preco) <span style="color:#f92672">==</span> 0 <span style="color:#f92672">&amp;&amp;</span> Objects.<span style="color:#a6e22e">equals</span>(nome, produto.<span style="color:#a6e22e">nome</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hashCode</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Object.<span style="color:#a6e22e">hash</span>(nome, preco);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Produto{&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;nome=&#34;</span> <span style="color:#f92672">+</span> nome <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, preco=&#34;</span> <span style="color:#f92672">+</span> preco <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;}&#39;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Uso:</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Produto<span style="color:#f92672">&gt;</span> produtos <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> Produto(<span style="color:#e6db74">&#34;Notebook&#34;</span>, 2500.<span style="color:#a6e22e">0</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">new</span> Produto(<span style="color:#e6db74">&#34;Mouse&#34;</span>, 50.<span style="color:#a6e22e">0</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Produto<span style="color:#f92672">&gt;</span> unicos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(produtos);
+</span></span></code></pre></div></div>
+  </article>
+</div>
 
   </main>
   <footer>
