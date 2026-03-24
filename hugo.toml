@@ -6,9 +6,6 @@ summaryLength = 70
 # https://gitlab.com/andy.sb/nojs
 paginate = 10
 
-[params]
-favicon_16 = "/assets/favicon.ico"
-
 [caches]
 [caches.images]
 dir = ':cacheDir/images'
