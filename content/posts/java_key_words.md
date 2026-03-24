@@ -78,7 +78,8 @@ public class Conta {
 Conta c = new Conta();
 System.out.println(c.getSaldo()); // OK. Acesso controlado
 c.depositar(500);                 // OK. Acesso validado.
-// c.saldo = -9999;               // Erro. Valor inválido detectado.
+// c.depositar(-9999);            // Erro. Valor inválido detectado.
+// c.saldo = 1000;                // Erro. Tentativa de acesso a membro privado.
 ```
 
 #### Exemplo prático completo
