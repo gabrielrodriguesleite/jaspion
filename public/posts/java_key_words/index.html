@@ -157,7 +157,8 @@
 </span></span><span style="display:flex;"><span>Conta c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Conta();
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(c.<span style="color:#a6e22e">getSaldo</span>()); <span style="color:#75715e">// OK. Acesso controlado</span>
 </span></span><span style="display:flex;"><span>c.<span style="color:#a6e22e">depositar</span>(500);                 <span style="color:#75715e">// OK. Acesso validado.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.saldo = -9999;               // Erro. Valor inválido detectado.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.depositar(-9999);            // Erro. Valor inválido detectado.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// c.saldo = 1000;                // Erro. Tentativa de acesso a membro privado.</span>
 </span></span></code></pre></div><h4 id="exemplo-prático-completo">
   Exemplo prático completo
   <a href="#exemplo-pr%c3%a1tico-completo" class="anchor">#</a>
